@@ -1,37 +1,32 @@
-import { HiOutlineDatabase } from 'react-icons/hi';
-import { LuUserCheck } from 'react-icons/lu';
-import { RxDashboard } from 'react-icons/rx';
+import { RiBookLine, RiSchoolLine, RiUserAddLine, RiUserLine } from 'react-icons/ri';
 import { VscHome } from 'react-icons/vsc';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+    const active = `flex justify-center items-center gap-1 text-blue-500 shadow-[-2px_2px_0px] shadow-blue-200 text-[16px] px-2 py-1 duration-200`;
+    const notActive = `flex justify-center items-center gap-1 hover:text-blue-600 text-[16px] px-2 py-1 duration-200`;
 
     const navItems = <>
         <NavLink to={'/'}
-            className={({ isActive }) => isActive ?
-                'flex justify-center items-center gap-1 text-blue-800 text-[16px]'
-                :
-                'flex justify-center items-center gap-1 text-gray-700 text-[16px]'}>
-            <VscHome /> Home
+            className={({ isActive }) => isActive ? active : notActive} >
+            <VscHome size={18} /> Home
         </NavLink>
-        <NavLink to={'/about'}
-            className={({ isActive }) => isActive ?
-                'flex justify-center items-center gap-1 text-blue-800 text-[16px]'
-                :
-                'flex justify-center items-center gap-1 text-gray-700 text-[16px]'}>
-            <LuUserCheck /> About
+        <NavLink to={'/colleges'}
+            className={({ isActive }) => isActive ? active : notActive} >
+            <RiSchoolLine size={18} /> Colleges
         </NavLink>
-        <NavLink to={'/contact'}
-            className={({ isActive }) => isActive ?
-                'flex justify-center items-center gap-1 text-blue-800 text-[16px]'
-                :
-                'flex justify-center items-center gap-1 text-gray-700 text-[16px]'}>
-            <HiOutlineDatabase /> <span className='text-md'> Contact </span>
+        <NavLink to={'/admission'}
+            className={({ isActive }) => isActive ? active : notActive} >
+            <RiUserAddLine size={18} /> <span className='text-md'> Admission </span>
+        </NavLink>
+        <NavLink to={'/my-college'}
+            className={({ isActive }) => isActive ? active : notActive} >
+            <RiBookLine size={18} /> <span className='text-md'> My College </span>
         </NavLink>
     </>
 
     return (
-        <section className='px-0 md:px-10 shadow-lg'>
+        <section className='px-0 md:px-10 shadow-lg font-thin'>
             <div className="navbar bg-white ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -42,11 +37,8 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link className='sm:ml-4 md:ml-0'>
-                        <div>
-                            <h2 className="text-2xl tracking-[4px]">Project </h2>
-                            <p className='text-xs tracking-[22px] font-thin -mt-1'>Name</p>
-                        </div>
+                    <Link className='sm:ml-4 md:ml-0 text-2xl text-blue-600'>
+                        College Navigator
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -55,12 +47,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                    <NavLink
-                        className={({ isActive }) => isActive ?
-                            'hidden sm:flex justify-center items-center gap-1 text-blue-800 text-[16px]'
-                            :
-                            'hidden sm:flex justify-center items-center gap-1 text-gray-700 text-[16px]'}>
-                        <RxDashboard /> <span className='text-md'> Dashboard</span>
+                    <NavLink to={'/profile'}
+                        className={({ isActive }) => isActive ? active : notActive} >
+                        <RiUserLine size={18} /> <span className='text-md'> Profile</span>
                     </NavLink>
                     <Link className='text-blue-500 bg-white hover:text-white text-sm md:text-md px-3 py-1 md:px-6 md:py-2 rounded-full ring-1 ring-blue-500 hover:bg-blue-600 hover: duration-300'>Login</Link>
                 </div>
